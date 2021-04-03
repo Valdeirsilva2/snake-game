@@ -4,7 +4,7 @@ Nesse projeto foi recriado o jogo classico da cobrinha utilizando HTML, CSS, JS 
 <h2>Melhorias a realizar:<h2>
 
 - Adicionar o menu para o jogo.
-- Resolver bug que existe ao chegar na extremidade do eixo x e y pressionar uma tecla o skake some do campo.
+- Resolver bug que existe ao chegar na extremidade do eixo x ou y ao pressionar uma tecla o skake some do campo.
 - Aumentar a velocidade a cada ponto obtido.
 - Criar função de score.
 - Adicioinar funções start,restart, end.
