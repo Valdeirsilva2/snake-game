@@ -1,14 +1,18 @@
 let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
-let box = 16;
+let box = 32;
 let snake = [];
-
 snake[0] = {
-    x: 8 * box,
-    y: 8 * box
+    x: 5 * box,
+    y: 5 * box
+}
+let direction = "right";
+let food = {
+    x: Math.floor(Math.random() * 15 + 1) * box,
+    y: Math.floor(Math.random() * 15 + 1) * box
 }
 
-let direction = "right";
+
 
 function criarBG() {
     context.fillStyle = "Lightgreen";
@@ -22,6 +26,12 @@ function createSnake() {
     }
 }
 
+function drawFood() {
+    context.fillStyle = "red";
+    context.fillRect(food.x, food.y, box, box)
+    
+}
+
 document.addEventListener('keydown', update);
 
 function update(e) {
@@ -31,15 +41,16 @@ function update(e) {
     if(e.keyCode == 40 && direction != "up") direction = "down";
 }
 
+
 function startGame() {
 
     if(snake[0].x > 15 * box && direction == "right") snake[0].x = 0;
-    if(snake[0].x < 0 && direction == "left") snake[0].x = 16 * box;
+    if(snake[0].x < 0 && direction == "left") snake[0].x = 15 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
-    if(snake[0].y < 0 && direction == "up") snake[0].y = 16 * box;
-
+    if(snake[0].y < 0 && direction == "up") snake[0].y = 15 * box;
 
     criarBG();
+    drawFood();
     createSnake();
 
     let snakeX = snake[0].x; 
@@ -62,5 +73,4 @@ function startGame() {
 
 }
 
-let game = setInterval(startGame, 100);
-// startGame();
+let game = setInterval(startGame, 200);
