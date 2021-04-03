@@ -12,24 +12,21 @@ let food = {
     y: Math.floor(Math.random() * 15 + 1) * box
 }
 
-
-
 function criarBG() {
-    context.fillStyle = "Lightgreen";
+    context.fillStyle = "#f5c627";
     context.fillRect(0, 0, 16 * box, 16 * box);
 }
 
 function createSnake() {
     for (i = 0; i < snake.length; i++) {
-        context.fillStyle = "green";
+        context.fillStyle = "#3c7848";
         context.fillRect(snake[i].x, snake[i].y, box, box);        
     }
 }
 
 function drawFood() {
-    context.fillStyle = "red";
-    context.fillRect(food.x, food.y, box, box)
-    
+    context.fillStyle = "#ea4635";
+    context.fillRect(food.x, food.y, box, box);    
 }
 
 document.addEventListener('keydown', update);
@@ -48,6 +45,13 @@ function startGame() {
     if(snake[0].x < 0 && direction == "left") snake[0].x = 15 * box;
     if(snake[0].y > 15 * box && direction == "down") snake[0].y = 0;
     if(snake[0].y < 0 && direction == "up") snake[0].y = 15 * box;
+
+    for(i = 1; i < snake.length; i++){
+        if(snake[0].x == snake[i].x && snake[0].y == snake[i].y) {
+            clearInterval(game);
+            alert("Fim de Jogo  :(")
+        }
+    }
 
     criarBG();
     drawFood();
